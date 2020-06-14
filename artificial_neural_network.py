@@ -30,7 +30,7 @@ ann.fit(x_train,y_train,batch_size = 32, epochs = 20)
 print(ann.predict(p.transform([[1,0,0,600,1,40,3,60000,2,1,1,50000]])))
 from sklearn.linear_model import LogisticRegression
 classifier = LogisticRegression(random_state = 0)
-classifier.fit(X_train, y_train)
+classifier.fit(x_train, y_train)
 y_pred = classifier.predict(x_test)
 print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 from sklearn.metrics import confusion_matrix, accuracy_score
