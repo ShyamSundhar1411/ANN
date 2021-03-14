@@ -31,7 +31,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_
 # Feature Scaling
 standard_scaler = StandardScaler()
 x_train = standard_scaler.fit_transform(x_train)
-x_test - standard_scaler.transform(x_test)
+x_test = standard_scaler.transform(x_test)
 # Including ANN
 ann = tf.keras.models.Sequential()
 ann.add(tf.keras.layers.Dense(units=6, activation="swish"))
