@@ -38,7 +38,6 @@ ann.add(tf.keras.layers.Dense(units = 1,activation='tanh'))
 # Training ANN
 ann.compile(optimizer = 'adam' , loss = 'binary_crossentropy', metrics =['accuracy'])
 ann.fit(x_train,y_train,batch_size = 32, epochs = 20)
-=======
 ann.add(tf.keras.layers.Dense(units = 6,activation = 'relu'))
 ann.add(tf.keras.layers.Dense(units = 6,activation='relu'))
 ann.add(tf.keras.layers.Dense(units = 1,activation='sigmoid'))
