@@ -1,15 +1,15 @@
 # Importing Python libraries
-import tensorflow as tf
-import pandas as pd
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import OneHotEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.linear_model import LogisticRegression
 import pickle
+
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+from sklearn.compose import ColumnTransformer
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder, StandardScaler
+
 # Data Preprocessing
 dataset = pd.read_csv('Churn_Modelling.csv')
 x = dataset.iloc[:, 3:-1].values
@@ -38,7 +38,6 @@ ann.add(tf.keras.layers.Dense(units = 1,activation='tanh'))
 # Training ANN
 ann.compile(optimizer = 'adam' , loss = 'binary_crossentropy', metrics =['accuracy'])
 ann.fit(x_train,y_train,batch_size = 32, epochs = 20)
-=======
 ann.add(tf.keras.layers.Dense(units = 6,activation = 'relu'))
 ann.add(tf.keras.layers.Dense(units = 6,activation='relu'))
 ann.add(tf.keras.layers.Dense(units = 1,activation='sigmoid'))
