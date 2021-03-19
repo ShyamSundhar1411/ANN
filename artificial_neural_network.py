@@ -34,18 +34,18 @@ x_train = standard_scaler.fit_transform(x_train)
 x_test = standard_scaler.transform(x_test)
 # Including ANN
 ann = tf.keras.models.Sequential()
-ann.add(tf.keras.layers.Dense(units=6, activation="swish"))
-ann.add(tf.keras.layers.Dense(units=6, activation="swish"))
+ann.add(tf.keras.layers.Dense(units=10, activation="swish"))
+ann.add(tf.keras.layers.Dense(units=5, activation="selu"))
 ann.add(tf.keras.layers.Dense(units=1, activation="tanh"))
 # Training ANN
-ann.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
-ann.fit(x_train, y_train, batch_size=32, epochs=20)
-ann.add(tf.keras.layers.Dense(units=6, activation="relu"))
-ann.add(tf.keras.layers.Dense(units=6, activation="relu"))
-ann.add(tf.keras.layers.Dense(units=1, activation="sigmoid"))
-# ann.compile(optimizer = 'adam' , loss = 'binary_crossentropy', metrics =['accuracy'])
-# ann.fit(x_train,y_train,batch_size = 32, epochs = 20)
-# Predicting and evaluating models
+ann.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy","CategoricalAccuracy"])
+ann.fit(x_train, y_train, batch_size=15, epochs=100)
+ann.add(tf.keras.layers.Dense(units=10, activation="swish"))
+ann.add(tf.keras.layers.Dense(units=5, activation="selu"))
+ann.add(tf.keras.layers.Dense(units=1, activation="tanh"))
+ann.compile(optimizer = 'adam' , loss = 'binary_crossentropy', metrics =['accuracy'])
+ann.fit(x_train,y_train,batch_size = 15, epochs = 100)
+#Predicting and evaluating models
 print(
     ann.predict(
         standard_scaler.transform([[1, 0, 0, 600, 1, 40, 3, 60000, 2, 1, 1, 50000]])
